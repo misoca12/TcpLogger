@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="org.apache.commons.lang3.time.DateFormatUtils" />
+        <variable name="log" type="com.misoca.tcplogger.TcpLog" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="6dp">
+        <TextView
+            android:id="@+id/timestamp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginStart="20dp"
+            android:text="@{DateFormatUtils.format(log.timestamp, `yyyy/MM/dd HH:mm:ss`)}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/logMessage"
+            tools:text="yyyy/MM/dd mm:ss"/>
+        <TextView
+            android:id="@+id/logMessage"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|start"
+            android:layout_marginStart="20dp"
+            android:textSize="20sp"
+            android:text="@{log.message}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/timestamp"
+            tools:text="XXXXXXXXX"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
